@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model | DOM</title>
+</head>
+<body style= "background-color: #212121; color: #fff;"> 
+    <div class="parent"> 
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+    <script>
+        const parent = document.querySelector('.parent');//parent class k sare children ek html collection k form men  milnge
+        // console.log(parent);
+        // console.log(parent.children);//html collection milega parent k elements ki 
+        // console.log(parent.children[1].innerHtml);//agr dosre element ko access karna he ese karenge 
+        //for loop array par ya uske jesa koi mtlb html collection dono pe chalega, lekin yahan hum direct array par loop nahin laga rahe hen
+        //hum yahan html collection pe loop laga rahe hen isliye parent.children
+        // for (let i = 0; i < parent.children.length; i++) {
+        //     console.log(parent.children[i].innerHTML);
+        // }
+        parent.children[1].style.color = "orange";
+        //is parent men jo apko mila he is men kuch aur properties bhi hoti hen
+        // console.log(parent.firstElementChild);
+        // console.log(parent.lastElementChild);
+        
+        //agr humen child se parent ki taraf move karen ya jana he to mtlb ulta select karna he, hum yahan ab day select karenge
+        const dayOne = document.querySelector('.day');
+        // console.log(dayOne);
+        // console.log(dayOne.parentElement);
+        // console.log(dayOne.nextElementSibling);
+        console.log('Nodes: ', parent.childNodes);        
+    </script>
+</body>
+</html>

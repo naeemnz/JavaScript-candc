@@ -1,0 +1,46 @@
+body {
+    background-color: beige;
+    color: #fff;
+  }
+  
+  .center {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  #banner {
+    background-color: black;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #clock {
+    font-size: 40px;
+    background-color: black;
+    padding: 20px 50px;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .controls {
+    margin-top: 20px;
+  }
+  
+  .controls button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .controls button:hover {
+    background-color: #333;
+  }

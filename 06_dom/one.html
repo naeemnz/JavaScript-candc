@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <title>DOM learning</title>
+    <style>
+        .bg-black {
+            background-color: #313638;
+            color: antiquewhite;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+        <h1 id="title" class="heading">DOM learning on khpala
+            <span style=" display: none;"> Test Text</span>
+        </h1>
+        <h2>Lorem ipsum dolor sit amet. 1</h2>
+        <h2>Lorem ipsum dolor sit amet. 2</h2>
+        <h2>Lorem ipsum dolor sit amet. 3</h2>
+        <p>Lorem ipsum dolor sit amet. Alinea</p>
+        <!-- document.getElementById('title'); pore tags milenge id aur class, elements k sath, wo tag milega jisme ye id ho
+        document.getElementById('title').id; sirf id dega yani id ki value dega
+        document.getElementById('title').className; sirf class name dega jis k sath ye id ho
+        document.getElementById('title').getAttribute('id'); to ye tmhe id ki value dega, ap yhan batasakte ho k apko konsa wala attribute chahiye
+        document.getElementById('title').getAttribute('class') yahan ap ko class ki value mile gi mtlb heading
+        document.getElementById('title').getAttribute('') men apko key pass karni he aur badle men ye apko value dega
+        //get ki jagah set bhi hota he , mtlab jese get he wese set bhi hota he
+        document.getElementById('title').setAttribute('') //mjhe agr koi attribute set karna he to men ye istemal karsakti hun, setAttribute('key', 'value') key: class, id, etc value uski koi value hosakti he overwrite karne k liye
+        document.getElementById('title').setAttribute('class', 'test')// is ka mtlb humne yahan class ko change kardiya he heading se test men, class ki ab nayi value test he, ye hamesha overwrite karega hum html men dekh sakte hen
+        document.getElementById('title').setAttribute('class', 'test heading');//agr apko do classes set karni he to istarah space deke set karsakte hen
+        document.getElementById('title').setAttribute('class', 'test heading');      
+        const title = document.getElementById('title');
+        title.style.backgroundColor = 'green';
+        "green"
+        title.style.padding = '100px';
+        "100px"
+        title.style.borderRadius = '45px';
+        "45px" 
+        title.textContent; //inner content se wo text bhi milega jo css ki properties ki waja se display none kia ho, ye inner tags ko support nahin karta
+        "DOM learning on khpala"
+        title.innerHTML;//pore tag aur values milengi jo is id ksath munsalik hen, ye inner tags ko support karta he
+        "DOM learning on khpala"
+        title.innerText; //inner text se sirf text milega aur hidden content nahin milenge, ye inner html tags ko support nahin karta 
+        "DOM learning on khpala" 
+        document.getElementsByClassName('heading');
+        document.querySelector('input[type="password"]');
+        <input id="" type="password" name="">
+        document.querySelector('.heading');
+        <h1 id="title" class="heading">
+        document.querySelector('#title');
+        <h1 id="title" class="heading">
+        document.querySelector('h2');
+        <h2>
+        document.querySelector('p:first-child'); 
+        document.querySelector('ul');
+        <ul>
+        const myUl = document.querySelector('ul');
+        undefined
+        myUl.querySelector('li');
+        <li>
+        const turnGreen = myUl.querySelector('li');
+        undefined
+        turnGreen.style.backgroundColor = "green";
+        "green"
+        turnGreen.style.padding = "15px";
+        "15px" 
+        //node list aur html collection ek puur array nahin he kuk in par map nahin lagrahahe aur inki prototypes ki list men for each he lekin map nahin he
+        const myUl = document.querySelector('ul'); const turnGreen = myUl.querySelector('li');
+        turnGreen.innerText = "Seven";
+        "Seven"
+        document.querySelectorAll('li')
+        NodeList(3) [ li, li, li
+        ]
+        const tempLiList = document.querySelectorAll('li')
+        undefined
+        tempLiList
+        NodeList(3) [ li, li, li
+        ]
+        tempLiList.style.color = 'green'//ghalat he
+        tempLiList[0].style.color = "green"
+        "green"
+        const myH1 = document.querySelectorAll('h1')
+        undefined
+        h1
+        myH1
+        NodeList [ h1#title.heading
+        ]
+        myH1[0].style.color = "yellow"
+        "yellow"
+        tempLiList.forEach(function(l) {
+        l.style.backgroundColor = 'Blue'
+        }); 
+        //querySelectorAll humen hamesha node list dega jok array nahin he, aur hm ek node par for each laga sakte hen, agr humen ek node se array ka kam lena he to pehle ise ek array men convert karnahoga isk bad array k sare methods hm apply karsakte hen us converted node par
+        document.getElementsByClassName('list-item')
+        HTMLCollection { 0: li.list-item, 1: li.list-item, 2: li.list-item, 3: li.list-item
+        , length: 4 }
+        const tempClassList = document.getElementsByClassName('list-item')
+        undefined
+        tempClassList
+        HTMLCollection ko convert karna parta he ek array me bilkul node ki tarah is k bad is har tarah ka array method lag sakta he
+        tempClassList = document.getElementsByClassName('list-item')
+        HTMLCollection { 0: li.list-item, 1: li.list-item, 2: li.list-item, 3: li.list-item
+        , length: 4 }
+        Array.from(tempClassList)
+        Array(4) [ li.list-item, li.list-item, li.list-item, li.list-item
+        ]
+        const myConvertedArray = Array.from(tempClassList);
+        undefined
+        myConvertedArray
+        Array(4) [ li.list-item, li.list-item, li.list-item, li.list-item
+        ]
+        myConvertedArray.forEach(function(li){
+        li.style.color = 'orange'
+        }) 
+        const allh3 = document.querySelectorAll('h3');
+        allh3
+        NodeList(30) [ h3#Creation_at_Netscape, h3#Adoption_by_Microsoft, h3#The_rise_of_JScript, h3#Growth_and_standardization, h3#Reaching_maturity, h3#Examples_of_scripted_behavior, h3#Libraries_and_frameworks, h3#JavaScript_engine, h3#Runtime_system, h3#Imperative_and_structured
+        , … ]
+        allh3[0]
+        <h3 id="Creation_at_Netscape">
+        allh3[2]
+        <h3 id="The_rise_of_JScript">
+        allh3[0].innerText
+        "Creation at Netscape"
+        allh3[2].innerText
+        "The rise of JScript"
+        const myClass = document.querySelectorAll('.mw-heading')
+        myClass.forEach(function(h){
+        h.style.color = 'red'; 
+        })
+        undefined
+        myClass.forEach(function(h){
+        h.style.color = 'red'; h.style.backgroundColor = 'Grey'; h.style.padding = '100px'; h.innerText = 'Sara';
+        }) 
+        -->
+<input type="password" name="" id="">
+<ul>
+    <li class="list-item" >one</li>
+    <li class="list-item">two</li>
+    <li class="list-item">three</li>
+    <li class="list-item">four</li>
+</ul>
+
+    </div>
+</body>
+</html>
