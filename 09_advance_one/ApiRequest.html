@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Request</title>
+</head>
+<body style="background-color: #bca7a7;">
+    <!-- api.github.com/users/name of the user, jason formatter to study an api with multiple sub objects and values -->
+<p>Value 	State 	Description
+0 	UNSENT 	Client has been created. open() not called yet.
+1 	OPENED 	open() has been called.
+2 	HEADERS_RECEIVED 	send() has been called, and headers and status are available.
+3 	LOADING 	Downloading; responseText holds partial data.
+4 	DONE 	The operation is complete.</p>
+<br>
+<button class="clickme">Click me!</button>
+<div id="output" style="border: 2px solid black;"></div>
+<!-- photo with the help of url, followers, ek card banana he -->
+</body>
+<script>
+// xml ki request ya AJAX ki request
+const requestUrl = 'https://api.github.com/users/jason'
+const xhr = new XMLHttpRequest();
+let data
+xhr.open('Get', requestUrl)   //method:string, open khud se call nahin hota 
+xhr.onreadystatechange = function(){//jese hi state change hoti he ye funtion barbar execute hota he 
+    console.log(xhr.readyState);
+    if (xhr.readyState === 4 ){
+        //agr console men data chahiye to ye niche wali line he otherwise variable men data ko store karo
+        // console.log(this.responseText);//is context se hamara matlab he, matlb current context, is function ya isi object k ander chahiye 
+        // let data = this.response
+        data = JSON.parse(this.response)//string to object conversion
+        console.log(data)//check k data he ya nahin he 
+        // console.log(typeof data);//string: jub k ye ek object he, lekin yahan hum ne ise obj men convert nahin kiya he abhi 
+        //***url se ek response ziada tar string men hi ata he*** kabhi kabhar agr direct object aya 
+        
+        // console.log(typeof data);//object jason parse k bad
+        
+        //agr humen object men se followers chahiye to hum usually ye karte hen lekin yahan nahi hosakta kuk 
+        // console.log(data.followers);//console men ye undefined dega kuk ye string he 
+        //  let datatono = Number(this.response)
+        //   let datatostring = String(this.response)
+        
+        
+        
+    }
+}
+// console.log("Check")// kuk status codes change horahe hote hen
+// console.log(xhr.readyState);//1: hamari state yahan change hui he kuk 0 se 1 hui he
+//agr humen constantly track karni he apni states to hum yahn function ka use karenge 
+xhr.send() //yahan pe open call hua he 
+
+//for card 
+let output = document.getElementById('output')
+let showData = function() {
+output.innerHTML = `
+<h4>Name: ${data.login}</h4>
+<img src="${data.avatar_url} alt="github avatar"">
+<h4>Followers: ${data.followers}</h4>
+`
+}//kuk classname html collection deta he is liye uska 0th element humne access kiya he
+let btnclickme = document.getElementsByClassName("clickme")[0].addEventListener('click', showData)
+
+</script>
+</html>

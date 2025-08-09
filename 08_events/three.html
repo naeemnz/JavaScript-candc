@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+</head>
+<body>
+    <h2>Project 2</h2>
+    <button id="Start">Start</button>
+    <button id="Stop">Stop</button>
+</body>
+<script>
+    /*
+    //ye hardafa 2s k bad is name ko print karta chala jaiga musalsal conole men
+    // setInterval(function(){
+        //     console.log("Thijs Blom", Date()); ya Date.now()
+        // }, 2000);
+        
+        //hum yahan ek third parameter bhi pass karsakte hen, function men humne sirf ek string diya he aur setinterval men us string ki value di he jo k hello he 
+        let sayDate = function(str){
+            console.log(str, Date.now())
+        }
+        let intervalId = setInterval(sayDate , 2000, "Hello!")
+        clearInterval(intervalId)// agr rokna he to sirf clearInt... ki tarah rokdo ye rok jayega usi waqt is men koi timer nahi he jese hi ye line run hui to setinter stop hojaye ga 
+        */
+
+let setInterv;
+let printMesg = function(){
+    console.log("Thijs Blom", Date())
+    
+}
+let startbt = document.querySelector('#Start').addEventListener('click', function(){
+    if (!setInterv)
+    {
+        setInterv = setInterval(printMesg, 2000) 
+    }
+})
+let stopbt = document.querySelector('#Stop').addEventListener('click', function(){
+console.log("Stop button is clicked");
+clearInterval(setInterv)
+setInterv = null
+})
+
+
+</script>
+</html>

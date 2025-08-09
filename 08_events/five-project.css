@@ -1,0 +1,26 @@
+table, th, td {
+border: 1px solid #e7e7e7;
+}
+.project {
+background-color:#1c1c1c;
+color:#ffffff;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+}
+.color {
+color:aliceblue;
+display:flex;
+flex-direction:row;
+}
+
+
+
+.mulish-fontclass {
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 40px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+</head>
+<body>
+    <h2>Project 1</h2>
+    <button id="Stop">Stop</button>
+</body>
+<script>
+    /*
+    //setTimeout ek dafa run hota he makhsos time k bad jese yahn 2s he, ek tariqa ka break he ye
+    setTimeout(function(){
+        console.log("Thijs Blom");
+        
+    }, 2000);
+
+    //Same code as above lekin yahan refrence diya, function nahin kuk handler chahiye yahan mtlb sirf function ka naam beghair () k
+    let printName = function(){
+        console.log("Thijs Blom - 2");
+    }
+    setTimeout(printName, 3000)
+    
+    */
+    //agr humen heading change karni he to with settimeout
+    let changeHeading = function(){
+        document.querySelector('h2').innerHTML = "Asynchronous JavaScript Examples";
+    }
+    let settimeoutRef = setTimeout(changeHeading, 3000)
+
+    let doNotChange = document.querySelector('#Stop').addEventListener('click', function(){
+        clearTimeout(settimeoutRef);//clearTimeout setTimeout ko rokne ya stop karne k liye he, 
+        console.log("Change of heading is stopped!");
+        
+    })
+    
+    
+</script>
+</html>

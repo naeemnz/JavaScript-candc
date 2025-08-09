@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="five-project.css">
+    <title>Project - 2 Keyboard Key Check</title>
+</head>
+<body>
+    
+    <div class="project">
+        <div id="insert">
+            <div class="key mulish-fontclass">Press the key and watch the magic</div>
+        </div>
+    </div>
+    <script>
+const insert = document.getElementById('insert')
+
+window.addEventListener('keydown', (e) => {
+    insert.innerHTML = `
+    <div class="colour mulish-fontclass">
+        <table>
+            <tr>
+                <th>Key</th>
+                <th>Keycode</th>
+                <th>Code</th>
+                </tr>
+            <tr>
+                <td>${e.key === '' ? 'space' : e.key}</td>
+                <td>${e.keyCode}</td>
+                <td>${e.code}</td>
+                </tr>
+            </table></div>
+    `
+} )
+
+    </script>
+</body>
+</html>
