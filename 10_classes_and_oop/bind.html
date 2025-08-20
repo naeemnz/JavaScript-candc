@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked!</button>
+</body>
+<script>
+    class React{
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:5500"
+        //requirement: jese hi ye page load hoto apka react ka ek object create hojaye
+        //button ka ref mil jaye 
+        //ek method ho jo click karne pe kuch hojaye
+
+        //it refers to the first <button> element found in the html code
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this))
+            //this.handle ka matlab ye he isi class k object ka function handle... use karna
+
+            //is bind(this) ki wajah se pora object aur us k constructor ka access milega
+
+        }
+
+        handleClick(){
+            console.log("Button Clicked!");
+            console.log(this.server);
+            console.log(this);//<button> dega as this output console men, iss se bind k bad har chiz ka access milega pore react class ki chizon ka
+            
+            
+        }
+    }
+    
+    const app = new React()
+
+    /*
+    hey, if i am correct you mean if i pass a refrence of a function inside an event listener then that refrenced function is not more a part of the class, it is just stand alone function and that is why i cannot access things like this.name or in this case this.server which was in the constructor?
+    dosri baat haar class men ek hi this hota he aur ek hi context hota he, to jub hum is hadle function ko call karte hen event listener men se to ye uthta he this ko usk button elemnt par laga deta he jis ki waja se tum context se bahir aja te ho, aur function k ander k this bemani ya undefined hojate hen kuk wo nahin janta ab kahan refer karna he
+    The browser calls handleClick in response to a click event, and it sets this to the button element, not your class instance. So inside handleClick, this.server is undefined, because this is no longer pointing to your class. 
+    
+    you’re creating a new function where this is permanently tied to the current instance of your class. Think of it like wrapping the original method in a protective shell that says:
+    “No matter who calls me, I’ll always behave as if I’m inside this specific object.”
+
+    This creates a new version of handleClick where this is locked to the React instance. So even though the browser is calling the function, it behaves as if your class is calling it — and this.server works perfectly!
+    */
+</script>
+</html>
