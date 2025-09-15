@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+    <script>
+        // function init() {
+        //     let name = "Mozilla"; 
+
+        //     function displayName() {
+        //     console.log(name); 
+        //     }
+        //     displayName();
+  
+        // }
+        // init();
+        //function k ander jo bhi variables declare karte ho wo outer scope men ya funct k bahir available nahin hote
+        // function outer(){
+        //     let username = "Henrie"
+        //     // console.log("Outer parent secret: ", secret); // bade chotu se nahin mangsakte isliye secret available nahin he ya phir nahin milega han lekin chote bado se kuch bhi mang sakte hen
+            
+        //     function inner(){
+        //         let secret = "secretvariable123"
+        //         console.log("Inner: " , username);//inner araha he lekin outer nahin ata
+                
+        //     }
+        //     function inner2(){
+        //         console.log("Inner2: ", username);
+        //         // console.log(secret);  hum parents se har chiz lesakte hen han lekin bhai bhai bilkul bhi kuch share nahin karenge
+        //         //uper wali line isliye humen error de rahahe kuk bhai bhai share nahin karte
+                
+        //     }
+        //     inner()
+        //     inner2()//dono functions ko parent k variable ka access milega kuk dono child same tara treat horahe hen isliye
+        // }
+        // outer()
+        // console.log("Too Outer: ", username);
+
+        // function makeFunc(){
+        //     let name = "Temmink"
+
+        //     function displayName(){
+        //         console.log(name);
+                
+        //     }
+        //     return displayName
+        // }
+
+        // let myFunc = makeFunc() // makeFunc runs, and returns displayName
+        // myFunc() // Now we call the returned function
+        //When you call myFunc(), it runs displayName, which still has access to name — even though makeFunc has already finished running. 
+        //A closure is a function that "remembers" the variables from the scope in which it was created — even after that scope is gone.
+        //If you never return or store the inner function, then yes—it dies with the parent. But once you return it or assign it, JavaScript keeps that scope alive just for that function. It’s like a memory bubble that doesn’t pop.
+
+        /**
+         * lexical scope: Creates a closure, preserves outer scope even after parent function ends
+        */
+    </script>
+
+    <script>
+        // document.getElementById("orange").onclick = function(){
+        //     document.body.style.backgroundColor = `orange`
+        // }
+        // document.getElementById("green").onclick = function(){ //onclick ko hamesha function chahiye hota he return type men
+        //     document.body.style.backgroundColor = `green`//"green" ye bhi sahi he
+        // }
+
+        //agr 500 button pe karna pare to hum uper code ko nahin use karenge kuk wo magaz mari he isliye hum direct niche wala kam karenge
+        function clickHandler(color){//color variable accessable he child elemnts ko baghair define kiye uper k functions ki tarah
+            // document.body.style.backgroundColor = `${color}` ye kam nahin karega variable value dene k liye
+
+            return function(){   
+                document.body.style.backgroundColor = `${color}`//agar lexical scoping pata he aur agar pora closure pata he to ye samjh ayega //Lexical scope—also known as static scope. It means that the scope of a variable is determined by its position in the source code, not by where or when the function is called. Lexical scope means where you write your code determines what variables are accessible.It’s static—you can tell what a function can access just by looking at its position in the source code.
+
+// JavaScript uses lexical scoping, so inner functions can access variables defined in their outer (parent) functions.A closure is created when a function is returned or passed around and it still remembers the variables from its lexical scope—even after the outer function has finished executing.
+
+// It’s a runtime behavior that leverages lexical scope. Here, message is preserved by the returned function—that’s a closure.
+                //kuk is k pas parent k variable ka access he
+            }
+        }
+
+        // document.getElementById('orange').onclick = clickHandler yahan refrence pass hua he jub k onclick ko function chahiye hote he as a passing argument, isliye ye nahi chalega yani kuch bhi nahi karega
+        // document.getElementById('orange').onclick = clickHandler("orange") agr is tarah direct function pas karo to ye function directly execute hojayega yehin par, aur hum iska color change nahin karsakte kuk ye ek tarah se parmanent ho gay he color  
+        
+        //yahan hume closure ne bachaya 
+        document.getElementById('orange').onclick = clickHandler("orange")
+        document.getElementById('green').onclick = clickHandler("green")
+    </script>
+</body>
+</html>
